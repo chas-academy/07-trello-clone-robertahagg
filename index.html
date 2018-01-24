@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trello Clone</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<div class="board-container">
+    <div class="main-navigation">
+        <button class="boards">Button 1</button>
+        <button class="boards">Button 2</button>
+        <button class="boards">Button 3</button>
+
+    </div>
+    <h1>Welcome Board</h1>
+    <div class="column">
+        <button id="new-list" class="button">Add new list</button>
+    </div>
+    <div class="column">
+        <div class="list-container">
+            <div class="list-header">
+                Stuff to do
+            </div>
+            <ul class="list-cards">
+                <li class="card">
+                    Card #1
+                    <button class="button delete">X</button>
+                </li>
+                <div class="date-picker">
+                    <p>Assignment due: <input type="text" id="date-picker"></p>
+                </div>
+                <li class="add-new">
+                    <form class="new-card" action="index.html">
+                        <input type="text" name="title" placeholder="Please name the card" />
+                        <button class="button add">Add new card</button>
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+        <div class="column">
+            <div class="list-container">
+                <div class="list-header">
+                    In progress
+                </div>
+                <ul class="list-cards">
+                    <li class="card">
+                        Card #2
+                        <button class="button delete">X</button>
+                    </li>
+                    <div class="date-picker">
+                        <p>Assignment due: <input type="text" id="date-picker"></p>
+                    </div>
+                    <li class="add-new">
+                        <form class="new-card" action="index.html">
+                            <input type="text" name="title" placeholder="Please name the card" />
+                            <button class="button add">Add new card</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <div class="list-container">
+                <div class="list-header">
+                    Done
+                </div>
+                <ul class="list-cards">
+                    <li class="card">
+                        Card #3
+                        <button class="button delete">X</button>
+                    </li>
+                    <div class="date-picker">
+                        <p>Assignment due: <input type="text" id="date-picker"></p>
+                    </div>
+                    <li class="add-new">
+                        <form class="new-card" action="index.html">
+                            <input type="text" name="title" placeholder="Please name the card" />
+                            <button class="button add">Add new card</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!--  <div id="list-creation-dialog" title="Create new list" style="height: 40px">
+        <form>
+            <input type="text" name="title" placeholder="List title" />
+        </form>
+    </div> -->
+</div>
+
+
+<script src="app.js"></script>
+
+</html>
