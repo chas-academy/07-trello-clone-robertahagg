@@ -103,8 +103,8 @@ $(function() {
 
     var cardContentDialog = $(".card-details-dialog-container").dialog({
         autoOpen: false,
-        height: 500,
-        width: 600,
+        height: 600,
+        width: 700,
         modal: true,
         buttons: {
             Save: addList,
@@ -119,5 +119,10 @@ $(function() {
     });
     $(function() {
         $("#tabs").tabs();
+    });
+    $(function() {
+        $("#datepicker").datepicker({
+            showButtonPanel: true
+        });
     });
 });
