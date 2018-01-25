@@ -75,11 +75,31 @@ $(function() {
             .closest(".add-new")
             .siblings(".list-cards")
             .append(newCard);
+
+        $(event.target)
+            .closest(".new-card")
+            .hide();
+
+        $(event.target)
+            .siblings(".add-new-card-button")
+            .show();
     });
 
     $("body").on("click", ".list-cards .card .delete", function(event) {
         $(event.target)
             .parent()
             .remove();
+    });
+
+    $(".new-card").hide();
+
+    $(".add-new-card-button").click(function() {
+        console.log("hej");
+
+        $(event.target)
+            .siblings(".new-card")
+            .show();
+
+        $(event.target).hide();
     });
 });
