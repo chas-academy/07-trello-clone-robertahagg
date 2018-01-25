@@ -7,3 +7,7 @@ $(function() {
 $(function() {
     $("#date-picker").datepicker();
 });
+
+$(function() {
+    $("#main-navigation").tabs();
+});
