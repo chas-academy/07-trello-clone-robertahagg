@@ -73,7 +73,8 @@ $(function() {
 
         $(event.target)
             .closest(".add-new")
-            .before(newCard);
+            .siblings(".list-cards")
+            .append(newCard);
     });
 
     $("body").on("click", ".list-cards .card .delete", function(event) {
