@@ -190,3 +190,8 @@ input {
     box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.3), 0px 0px 1px rgba(0, 0, 0, 0.5);
     transform: rotate(4deg);
 }
+
+#textarea-a {
+    width: 575px;
+    height: 243px;
+}
