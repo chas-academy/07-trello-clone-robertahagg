@@ -94,12 +94,30 @@ $(function() {
     $(".new-card").hide();
 
     $(".add-new-card-button").click(function() {
-        console.log("hej");
-
         $(event.target)
             .siblings(".new-card")
             .show();
 
         $(event.target).hide();
+    });
+
+    var cardContentDialog = $(".card-details-dialog-container").dialog({
+        autoOpen: false,
+        height: 500,
+        width: 600,
+        modal: true,
+        buttons: {
+            Save: addList,
+            Cancel: function() {
+                cardContentDialog.dialog("close");
+            }
+        }
+    });
+
+    $(".card").click(function() {
+        cardContentDialog.dialog("open");
+    });
+    $(function() {
+        $("#tabs").tabs();
     });
 });
