@@ -8,6 +8,7 @@ $(function() {
             revert: true
         });
     }
+
     initSort();
 
     function addList(event) {
@@ -83,6 +84,8 @@ $(function() {
         $(event.target)
             .siblings(".add-new-card-button")
             .show();
+
+        initCards();
     });
 
     $("body").on("click", ".list-cards .card .delete", function(event) {
@@ -114,15 +117,17 @@ $(function() {
         }
     });
 
-    $(".card").click(function() {
-        cardContentDialog.dialog("open");
-    });
-    $(function() {
-        $("#tabs").tabs();
-    });
-    $(function() {
-        $("#datepicker").datepicker({
-            showButtonPanel: true
+    var initCards = function() {
+        $(".card").click(function() {
+            cardContentDialog.dialog("open");
         });
+    };
+
+    initCards();
+
+    $("#tabs").tabs();
+
+    $("#datepicker").datepicker({
+        showButtonPanel: true
     });
 });
