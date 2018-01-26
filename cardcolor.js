@@ -19,13 +19,16 @@ $(function() {
                 // add a class for theming
                 .addClass("custom-colorize");
 
-            this.cardColorButton = $("<button>", {
-                    text: "Customize"
-                })
+            this.cardColorButton = $("<button>")
                 .appendTo(this.element)
-                .button();
+                .button({
+                    text: false,
+                    icons: {
+                        primary: "ui-icon-pencil"
+                    }
+                });
 
-            var orworegouw = (this.customizeColorDialog = $("<div>", {
+            var popupDialog = (this.customizeColorDialog = $("<div>", {
                     class: "customize-color-selector"
                 })
                 .appendTo("body")
@@ -36,7 +39,7 @@ $(function() {
                     modal: true,
                     buttons: {
                         Cancel: function() {
-                            orworegouw.dialog("close");
+                            popupDialog.dialog("close");
                         }
                     }
                 }));
