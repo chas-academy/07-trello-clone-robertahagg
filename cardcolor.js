@@ -31,6 +31,7 @@ $(function() {
                 // _on won't call random when widget is disabled
                 click: "random"
             });
+
             this._refresh();
         },
 
@@ -64,6 +65,8 @@ $(function() {
             if (this._trigger("random", event, colors) !== false) {
                 this.option(colors);
             }
+
+            event.stopPropagation();
         },
 
         // Events bound via _on are removed automatically

@@ -88,12 +88,6 @@ $(function() {
         initCards();
     });
 
-    $("body").on("click", ".list-cards .card .delete", function(event) {
-        $(event.target)
-            .parent()
-            .remove();
-    });
-
     $(".new-card").hide();
 
     $(".add-new-card-button").click(function() {
@@ -118,8 +112,21 @@ $(function() {
     });
 
     var initCards = function() {
+        $(".card").colorize();
+
         $(".card").click(function() {
+            console.log("dialoooog");
             cardContentDialog.dialog("open");
+        });
+
+        $(".list-cards .card .delete").on("click", function(event) {
+            console.log("deleeeete");
+
+            $(event.target)
+                .parent()
+                .remove();
+
+            event.stopPropagation();
         });
     };
 
@@ -130,6 +137,4 @@ $(function() {
     $("#datepicker").datepicker({
         showButtonPanel: true
     });
-
-    $("#tabs-1").colorize();
 });
