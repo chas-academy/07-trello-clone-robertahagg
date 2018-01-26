@@ -27,7 +27,14 @@ $(function() {
                 .button();
 
             this.button2 = $("<button>", {
-                    text: "Blue",
+                    text: "Yellow",
+                    class: "custom-colorize-changer"
+                })
+                .appendTo(this.element)
+                .button();
+
+            this.button3 = $("<button>", {
+                    text: "Green",
                     class: "custom-colorize-changer"
                 })
                 .appendTo(this.element)
@@ -37,6 +44,20 @@ $(function() {
             this._on(this.button1, {
                 // _on won't call makeItRed when widget is disabled
                 click: "makeItRed"
+            });
+
+            this._refresh();
+
+            this._on(this.button2, {
+                // _on won't call makeItRed when widget is disabled
+                click: "makeItYellow"
+            });
+
+            this._refresh();
+
+            this._on(this.button3, {
+                // _on won't call makeItRed when widget is disabled
+                click: "makeItGreen"
             });
 
             this._refresh();
@@ -63,13 +84,43 @@ $(function() {
         // can be called directly via .colorize( "makeItRed" )
         makeItRed: function(event) {
             var colors = {
-                red: 255,
-                green: 0,
-                blue: 0
+                red: 216,
+                green: 70,
+                blue: 70
             };
 
             // Trigger an event, check if it's canceled
             if (this._trigger("makeItRed", event, colors) !== false) {
+                this.option(colors);
+            }
+
+            event.stopPropagation();
+        },
+
+        makeItYellow: function(event) {
+            var colors = {
+                red: 255,
+                green: 247,
+                blue: 97
+            };
+
+            // Trigger an event, check if it's canceled
+            if (this._trigger("makeItYellow", event, colors) !== false) {
+                this.option(colors);
+            }
+
+            event.stopPropagation();
+        },
+
+        makeItGreen: function(event) {
+            var colors = {
+                red: 81,
+                green: 173,
+                blue: 72
+            };
+
+            // Trigger an event, check if it's canceled
+            if (this._trigger("makeItGreen", event, colors) !== false) {
                 this.option(colors);
             }
 
@@ -81,6 +132,8 @@ $(function() {
         _destroy: function() {
             // remove generated elements
             this.button1.remove();
+            this.button2.remove();
+            this.button3.remove();
 
             this.element
                 .removeClass("custom-colorize")
