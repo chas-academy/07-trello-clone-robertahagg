@@ -130,4 +130,6 @@ $(function() {
     $("#datepicker").datepicker({
         showButtonPanel: true
     });
+
+    $("#tabs-1").colorize();
 });
