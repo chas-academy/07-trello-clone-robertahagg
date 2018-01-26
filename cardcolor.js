@@ -5,8 +5,8 @@ $(function() {
         // default options
         options: {
             red: 255,
-            green: 0,
-            blue: 0,
+            green: 255,
+            blue: 255,
 
             // Callbacks
             change: null,
@@ -19,17 +19,24 @@ $(function() {
                 // add a class for theming
                 .addClass("custom-colorize");
 
-            this.changer = $("<button>", {
-                    text: "change",
+            this.button1 = $("<button>", {
+                    text: "Red",
                     class: "custom-colorize-changer"
                 })
                 .appendTo(this.element)
                 .button();
 
-            // Bind click events on the changer button to the random method
-            this._on(this.changer, {
-                // _on won't call random when widget is disabled
-                click: "random"
+            this.button2 = $("<button>", {
+                    text: "Blue",
+                    class: "custom-colorize-changer"
+                })
+                .appendTo(this.element)
+                .button();
+
+            // Bind click events on the button1 button to the makeItRed method
+            this._on(this.button1, {
+                // _on won't call makeItRed when widget is disabled
+                click: "makeItRed"
             });
 
             this._refresh();
@@ -52,17 +59,17 @@ $(function() {
             this._trigger("change");
         },
 
-        // A public method to change the color to a random value
-        // can be called directly via .colorize( "random" )
-        random: function(event) {
+        // A public method to change the color to a makeItRed value
+        // can be called directly via .colorize( "makeItRed" )
+        makeItRed: function(event) {
             var colors = {
-                red: Math.floor(Math.random() * 256),
-                green: Math.floor(Math.random() * 256),
-                blue: Math.floor(Math.random() * 256)
+                red: 255,
+                green: 0,
+                blue: 0
             };
 
             // Trigger an event, check if it's canceled
-            if (this._trigger("random", event, colors) !== false) {
+            if (this._trigger("makeItRed", event, colors) !== false) {
                 this.option(colors);
             }
 
@@ -73,7 +80,7 @@ $(function() {
         // revert other modifications here
         _destroy: function() {
             // remove generated elements
-            this.changer.remove();
+            this.button1.remove();
 
             this.element
                 .removeClass("custom-colorize")
