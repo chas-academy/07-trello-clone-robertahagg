@@ -12,7 +12,7 @@ $(function() {
     initSort();
 
     function addList(event) {
-        event.preventDefault(); // Don't actually submit the form, silly
+        event.preventDefault();
 
         var formData = $(event.target)
             .offsetParent()
@@ -33,7 +33,7 @@ $(function() {
     </div>`;
 
         $(".board").append(newColumn);
-        // init the sorting again after adding new lists/columns
+
         initSort();
     }
 
@@ -61,7 +61,7 @@ $(function() {
     });
 
     $(".new-card").submit(function(event) {
-        event.preventDefault(); // Don't actually submit the form, silly
+        event.preventDefault();
         var formData = $(event.target).serializeArray();
         $(event.target)
             .find("input")
@@ -72,10 +72,11 @@ $(function() {
         <button class="button delete">X</button>   
     </div>`;
 
-        $(event.target)
+        var listCards = $(event.target)
             .closest(".add-new")
-            .siblings(".list-cards")
-            .append(newCard);
+            .siblings(".list-cards");
+
+        listCards.append(newCard);
 
         $(event.target)
             .closest(".new-card")
@@ -86,6 +87,11 @@ $(function() {
             .show();
 
         initCards();
+
+        listCards
+            .children()
+            .last()
+            .effect("slide");
     });
 
     $(".new-card").hide();
@@ -100,6 +106,8 @@ $(function() {
 
     var cardContentDialog = $(".card-details-dialog-container").dialog({
         autoOpen: false,
+        hide: "fold",
+        show: "clip",
         height: 600,
         width: 700,
         modal: true,
@@ -115,13 +123,10 @@ $(function() {
         $(".card").colorize();
 
         $(".card").click(function() {
-            console.log("dialoooog");
             cardContentDialog.dialog("open");
         });
 
         $(".list-cards .card .delete").on("click", function(event) {
-            console.log("deleeeete");
-
             $(event.target)
                 .parent()
                 .remove();
