@@ -19,28 +19,56 @@ $(function() {
                 // add a class for theming
                 .addClass("custom-colorize");
 
-            this.button1 = $("<button>", {
-                    text: "Red",
-                    class: "custom-colorize-changer"
+            this.cardColorButton = $("<button>", {
+                    text: "Customize"
                 })
                 .appendTo(this.element)
+                .button();
+
+            var orworegouw = (this.customizeColorDialog = $("<div>", {
+                    class: "customize-color-selector"
+                })
+                .appendTo("body")
+                .dialog({
+                    autoOpen: false,
+                    height: 200,
+                    width: 270,
+                    modal: true,
+                    buttons: {
+                        Cancel: function() {
+                            orworegouw.dialog("close");
+                        }
+                    }
+                }));
+
+            this.button1 = $("<button>", {
+                    text: "Urgent",
+                    class: "custom-colorize-changer"
+                })
+                .appendTo(this.customizeColorDialog)
                 .button();
 
             this.button2 = $("<button>", {
-                    text: "Yellow",
+                    text: "Normal",
                     class: "custom-colorize-changer"
                 })
-                .appendTo(this.element)
+                .appendTo(this.customizeColorDialog)
                 .button();
 
             this.button3 = $("<button>", {
-                    text: "Green",
+                    text: "Cool",
                     class: "custom-colorize-changer"
                 })
-                .appendTo(this.element)
+                .appendTo(this.customizeColorDialog)
                 .button();
 
             // Bind click events on the button1 button to the makeItRed method
+
+            this._on(this.cardColorButton, {
+                // _on won't call makeItRed when widget is disabled
+                click: "openDialog"
+            });
+
             this._on(this.button1, {
                 // _on won't call makeItRed when widget is disabled
                 click: "makeItRed"
@@ -82,6 +110,7 @@ $(function() {
 
         // A public method to change the color to a makeItRed value
         // can be called directly via .colorize( "makeItRed" )
+
         makeItRed: function(event) {
             var colors = {
                 red: 216,
@@ -123,6 +152,12 @@ $(function() {
             if (this._trigger("makeItGreen", event, colors) !== false) {
                 this.option(colors);
             }
+
+            event.stopPropagation();
+        },
+
+        openDialog: function(event) {
+            this.customizeColorDialog.dialog("open");
 
             event.stopPropagation();
         },
