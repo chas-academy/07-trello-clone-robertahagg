@@ -120,7 +120,7 @@ $(function() {
     });
 
     var initCards = function() {
-        $(".card").colorize();
+        $(".card").cardcolor();
 
         $(".card").click(function() {
             cardContentDialog.dialog("open");
