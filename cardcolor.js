@@ -3,10 +3,7 @@ $(function() {
         options: {
             red: 255,
             green: 255,
-            blue: 255,
-
-            change: null,
-            random: null
+            blue: 255
         },
 
         _create: function() {
@@ -61,13 +58,9 @@ $(function() {
                 click: "makeItRed"
             });
 
-            this._refresh();
-
             this._on(this.button2, {
                 click: "makeItYellow"
             });
-
-            this._refresh();
 
             this._on(this.button3, {
                 click: "makeItGreen"
@@ -87,8 +80,6 @@ $(function() {
                 this.options.blue +
                 ")"
             );
-
-            this._trigger("change");
         },
 
         makeItRed: function(event) {

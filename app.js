@@ -1,57 +1,10 @@
 $(function() {
-    function initSort() {
-        $(".list-cards").sortable({
-            cursor: "move",
-            connectWith: ".list-cards",
-            helper: "clone",
-            placeholder: "sortable-placeholder",
-            revert: true
-        });
-    }
-
-    initSort();
-
-    function addList(event) {
-        event.preventDefault();
-
-        var formData = $(event.target)
-            .offsetParent()
-            .find("form")
-            .serializeArray();
-
-        var newColumn = `<div class="column">
-        <div class="list">
-            <div class="list-header">
-                ${formData[0].value}
-                <button class="button delete">
-                    X
-                </button>
-            </div>
-            <ul class="list-cards">
-            </ul>
-        </div>
-    </div>`;
-
-        $(".board").append(newColumn);
-
-        initSort();
-    }
-
-    dialog = $("#list-creation-dialog").dialog({
-        autoOpen: false,
-        height: 200,
-        width: 270,
-        modal: true,
-        buttons: {
-            Save: addList,
-            Cancel: function() {
-                dialog.dialog("close");
-            }
-        }
-    });
-
-    $("#new-list").click(function() {
-        dialog.dialog("open");
+    $(".list-cards").sortable({
+        cursor: "move",
+        connectWith: ".list-cards",
+        helper: "clone",
+        placeholder: "sortable-placeholder",
+        revert: true
     });
 
     $("body").on("click", ".list-header .delete", function(event) {
@@ -112,8 +65,7 @@ $(function() {
         width: 700,
         modal: true,
         buttons: {
-            Save: addList,
-            Cancel: function() {
+            Ok: function() {
                 cardContentDialog.dialog("close");
             }
         }
